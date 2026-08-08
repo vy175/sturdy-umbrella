@@ -1,5 +1,5 @@
 const assert = require('assert');
-const { arrangeCharacters, arrangeCharactersOptimized } = require('./T1_1');
+const { arrangeCharacters, arrangeCharactersOptimized } = require('./logic');
 
 console.log("⏳ Running comprehensive tests for Task 1.1...");
 
