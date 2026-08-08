@@ -10,7 +10,10 @@ function validateAlphaString(input) {
   if (input.trim() === '') throw new Error("String cannot be empty.");
   if (!/^[A-Z]+$/.test(input)) throw new Error("String must contain only Uppercase alphabets.");
 }
-
+/**
+ * MAIN SOLUTION: Create a loop that counts consecutive characters and builds the encoded string.
+ * Time Complexity: O(N) | Space Complexity: O(N)
+ */
 function runLengthEncode(str) {
   validateAlphaString(str);
   let result = '';

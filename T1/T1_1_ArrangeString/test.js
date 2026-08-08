@@ -7,7 +7,7 @@ console.log("⏳ Running comprehensive tests for Task 1.1...");
 const validCases = [
   { input: "webmaster", expected: "abeemrstw", desc: "Standard lowercase" },
   { input: "BbaA", expected: "aAbB", desc: "Mixed case custom sorting (aAbB)" },
-  { input: "GAMELOFT", expected: "AEFGLMOT", desc: "All uppercase" },
+  { input: "SAMPLE", expected: "AELMPS", desc: "All uppercase" },
   { input: "Z", expected: "Z", desc: "Single character" },
   { input: "aAbBcC", expected: "aAbBcC", desc: "Already sorted mixed case" },
   { input: "zyxwvutsrqponmlkjihgfedcba", expected: "abcdefghijklmnopqrstuvwxyz", desc: "Full reversed alphabet" }
@@ -16,7 +16,7 @@ const validCases = [
 // 2. Define Invalid Test Cases (Inputs that should throw errors)
 const invalidCases = [
   { input: "webmaster123", desc: "Contains numbers" },
-  { input: "Gameloft!", desc: "Contains special characters" },
+  { input: "Sample!", desc: "Contains special characters" },
   { input: "", desc: "Empty string" },
   { input: "   ", desc: "Only whitespace" },
   { input: 123, desc: "Number type instead of string" },
