@@ -1,22 +1,17 @@
 import React, { useState, useEffect } from 'react';
 
-const API_BASE_URL = 'https://sturdy-umbrella-4r11.onrender.com/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
 
 function App() {
-  // Authentication & Core State
   const [token, setToken] = useState('super_secret_auth_token_key_123');
   const [searchQuery, setSearchQuery] = useState('');
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
-  
-  // Track changes made by the user before committing to backend
-  // Map structure: { [userId]: { username, email, birthdate } }
+
   const [editedUsers, setEditedUsers] = useState({});
   
-  // Status and Validation Banners
   const [notification, setNotification] = useState({ type: '', message: '' });
 
-  // Clear notifications after 5 seconds
   useEffect(() => {
     if (notification.message) {
       const timer = setTimeout(() => {
@@ -26,7 +21,6 @@ function App() {
     }
   }, [notification]);
 
-  // Search API Call (GET)
   const handleSearch = async (e) => {
     if (e) e.preventDefault();
     setLoading(true);
@@ -47,14 +41,13 @@ function App() {
         throw new Error(data.message || `HTTP Error ${response.status}`);
       }
 
-      // Format MongoDB date strings to short YYYY-MM-DD for visual simplicity
       const formattedData = (data || []).map(user => ({
         ...user,
         birthdate: user.birthdate ? user.birthdate.split('T')[0] : ''
       }));
 
       setUsers(formattedData);
-      setEditedUsers({}); // Clear any pending edits on new search
+      setEditedUsers({}); 
     } catch (err) {
       setUsers([]);
       setNotification({ type: 'error', message: err.message });
