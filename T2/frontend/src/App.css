@@ -1,0 +1,339 @@
+/* Clean Typography & Variable Baseline */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=SF+Mono&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f8fafc;
+  color: #1e293b;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 24px;
+}
+
+/* Header Sections */
+.header {
+  margin-bottom: 32px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: -0.025em;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  font-size: 15px;
+  color: #64748b;
+}
+
+/* Content Segment Containers */
+.credentials-section,
+.search-section,
+.results-section {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+/* Security Token Box styles */
+.credentials-section {
+  background-color: #f8fafc;
+  border-left: 4px solid #64748b;
+  padding: 16px 20px;
+}
+
+.section-header {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #475569;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.helper-label {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Input Fields & Groups */
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: #0f172a;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.input-field:focus {
+  border-color: #0284c7;
+}
+
+.monospace {
+  font-family: 'SF Mono', 'Courier New', Courier, monospace;
+  font-size: 13px;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+}
+
+/* Search Bar Setup */
+.search-bar {
+  display: flex;
+  gap: 12px;
+}
+
+/* Typography Banners (No Icons) */
+.notification-banner {
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  border: 1px solid transparent;
+}
+
+.banner-error {
+  background-color: #fef2f2;
+  border-color: #fee2e2;
+  color: #991b1b;
+}
+
+.banner-success {
+  background-color: #f0fdf4;
+  border-color: #dcfce7;
+  color: #166534;
+}
+
+.banner-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.banner-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.banner-text {
+  font-size: 13px;
+}
+
+/* Functional Interactive Buttons */
+.button {
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 18px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.primary-button {
+  background-color: #0f172a;
+  color: #ffffff;
+}
+
+.primary-button:hover:not(:disabled) {
+  background-color: #1e293b;
+}
+
+.secondary-button {
+  background-color: #ffffff;
+  border-color: #cbd5e1;
+  color: #334155;
+}
+
+.secondary-button:hover:not(:disabled) {
+  background-color: #f8fafc;
+  border-color: #94a3b8;
+}
+
+.success-button {
+  background-color: #166534;
+  color: #ffffff;
+}
+
+.success-button:hover:not(:disabled) {
+  background-color: #14532d;
+}
+
+/* Results layout & table headers */
+.table-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.results-count {
+  font-size: 14px;
+  font-weight: 500;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.unsaved-pill {
+  font-size: 12px;
+  font-weight: 600;
+  background-color: #fef3c7;
+  color: #92400e;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+/* Premium Standard Table Design */
+.table-container {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.user-table th {
+  background-color: #f8fafc;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 14px 16px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.user-table td {
+  padding: 10px 16px;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
+}
+
+.user-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Table Inputs */
+.table-input {
+  width: 100%;
+  font-family: inherit;
+  font-size: 14px;
+  color: #0f172a;
+  border: 1px solid transparent;
+  background-color: transparent;
+  padding: 6px 8px;
+  border-radius: 4px;
+  outline: none;
+  transition: all 0.1s ease;
+}
+
+.table-input:hover {
+  border-color: #e2e8f0;
+  background-color: #f8fafc;
+}
+
+.table-input:focus {
+  border-color: #cbd5e1;
+  background-color: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.date-input {
+  color: #475569;
+}
+
+.row-modified {
+  background-color: #fffbeb;
+}
+
+.row-modified .table-input:hover {
+  border-color: #fde68a;
+  background-color: #fffbeb;
+}
+
+.row-modified .table-input:focus {
+  background-color: #ffffff;
+  border-color: #f59e0b;
+}
+
+/* Clean status indicators */
+.status-col {
+  width: 120px;
+  text-align: right;
+  padding-right: 20px;
+}
+
+.user-table th.status-col {
+  text-align: right;
+}
+
+.indicator-text {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.clean-text {
+  color: #94a3b8;
+}
+
+.modified-text {
+  color: #d97706;
+}
+
+.empty-state {
+  padding: 48px;
+  text-align: center;
+  color: #64748b;
+}
+
+.no-records-state,
+.loading-state {
+  font-size: 14px;
+}
