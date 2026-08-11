@@ -1,0 +1,77 @@
+[
+  {
+    "username": "vy.nguyen",
+    "email": "vy.nguyen@company.vn",
+    "birthdate": "1995-12-15"
+  },
+  {
+    "username": "minh.pham",
+    "email": "minh.pham@hcmut.edu.vn",
+    "birthdate": "2002-04-20"
+  },
+  {
+    "username": "jiwon.kim",
+    "email": "jiwon.kim@daum.net",
+    "birthdate": "1988-08-08"
+  },
+  {
+    "username": "minjun.park",
+    "email": "minjun.park@seoul.kr",
+    "birthdate": "1973-11-23"
+  },
+  {
+    "username": "sarah.smith",
+    "email": "sarah.smith@academia.edu",
+    "birthdate": "1965-03-12"
+  },
+  {
+    "username": "clark.kent",
+    "email": "clark.kent@dailyplanet.com",
+    "birthdate": "1979-06-18"
+  },
+  {
+    "username": "tony.stark",
+    "email": "tony.stark@starkintl.com",
+    "birthdate": "1970-05-29"
+  },
+  {
+    "username": "anh.tran",
+    "email": "anh.tran@domain.com.vn",
+    "birthdate": "2004-10-02"
+  },
+  {
+    "username": "hyejin.lee",
+    "email": "hyejin.lee@korea.com",
+    "birthdate": "1999-01-25"
+  },
+  {
+    "username": "bruce.wayne",
+    "email": "bruce@waynecorp.com",
+    "birthdate": "1980-02-19"
+  },
+  {
+    "username": "peter.parker",
+    "email": "spidey@dailybugle.com",
+    "birthdate": "2001-08-10"
+  },
+  {
+    "username": "alan.grant",
+    "email": "alan@jurassic.org",
+    "birthdate": "1958-09-14"
+  },
+  {
+    "username": "hermione.granger",
+    "email": "hermione@hogwarts.org",
+    "birthdate": "1979-09-19"
+  },
+  {
+    "username": "art.vandelay",
+    "email": "art@vandelay.com",
+    "birthdate": "1960-01-05"
+  },
+  {
+    "username": "gandalf.grey",
+    "email": "gandalf@middleearth.net",
+    "birthdate": "1920-01-01"
+  }
+]
