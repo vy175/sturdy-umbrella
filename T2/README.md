@@ -20,6 +20,7 @@ A full-stack web application designed for searching, managing, and inline-editin
 - **Backend**: Node.js, Express.js 5, Mongoose 9
 - **Database**: MongoDB Atlas
 - **Authentication**: Bearer Token Authentication Middleware
+- **Containerization**: Docker, Docker Compose, Nginx
 - **Deployment & CI/CD**: Vercel (Frontend) + Render (Backend)
 
 ---
@@ -64,6 +65,7 @@ The frontend is a lightweight, responsive Single Page Application (SPA) powered 
 
 ```text
 T2/
+├── docker-compose.yml             # Orchestrates backend and frontend containers
 ├── backend/
 │   ├── src/
 │   │   ├── config/
@@ -79,6 +81,8 @@ T2/
 │   │   ├── seed.js                # Database seeder script
 │   │   └── server.js              # Server entry point
 │   ├── users.json                 # Initial seed dataset
+│   ├── Dockerfile                 # Backend container image definition
+│   ├── .dockerignore
 │   ├── .env                       # Environment variables (Mongo URI, Port, Secret)
 │   ├── .gitignore
 │   └── package.json
@@ -92,6 +96,9 @@ T2/
     ├── .env.production            # Cloud Production API endpoint configuration
     ├── index.html                 # Vite HTML entry point
     ├── vite.config.js             # Vite configuration with local proxy
+    ├── nginx.conf                 # Nginx production configuration
+    ├── Dockerfile                 # Multi-stage frontend container image definition
+    ├── .dockerignore
     ├── .gitignore
     └── package.json
 ```
@@ -100,7 +107,22 @@ T2/
 
 ## 💻 Local Development Setup
 
-### 1. Start the Backend
+### Option A: One-Command Docker Setup (Recommended)
+
+Run the entire full-stack application with a single command:
+
+```bash
+cd T2
+docker-compose up --build
+```
+- **Frontend Portal**: `http://localhost:3000`
+- **Backend API**: `http://localhost:5000`
+
+---
+
+### Option B: Manual Setup (Node.js)
+
+#### 1. Start the Backend
 
 ```bash
 cd T2/backend
@@ -116,9 +138,7 @@ npm run dev
 ```
 > Backend runs at `http://localhost:5000`
 
----
-
-### 2. Start the Frontend
+#### 2. Start the Frontend
 
 ```bash
 cd T2/frontend

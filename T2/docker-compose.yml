@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: user-portal-backend
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=5000
+      - MONGO_URI=mongodb+srv://nhavy175_db_user:Z0WCwXPdYf4JYwFW@cluster175.yfr6n45.mongodb.net/?appName=Cluster175
+      - API_SECRET_TOKEN=super_secret_auth_token_key_123
+      - JWT_SECRET=super_secret_auth_token_key_123
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: user-portal-frontend
+    restart: always
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
