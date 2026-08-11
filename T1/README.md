@@ -27,6 +27,7 @@ The suite is structured cleanly into tasks. Each task lives in its own folder an
     ├── run.js      # CLI Async/Await Number Matcher
     └── test.js     # Automated Test Suite
 
+```
 # 🛠️ Getting Started
 
 This project is built using **vanilla Node.js**. It has **zero dependencies**, meaning you do not need to run `npm install` to get started.
@@ -64,7 +65,7 @@ A classic lossless compression algorithm representing adjacent repeating charact
 
 ```text
 AAABBC → A3B2C1
-
+```
 ### Algorithm: Single-Pass Linear Scan
 
 - **Complexity:** Time: `O(N)` | Space: `O(N)`
@@ -93,16 +94,17 @@ These testers launch interactive command-line loops. Type your parameters to see
 
 ```bash
 node Task_1.1/run.js
+```
 ### Run Task 1.2 — Run-Length Compressor
 
 ```bash
 node Task_1.2/run.js
-
+```
 ### Run Task 1.3 — Find Sum Pair (Two-Sum Variant)
 
 ```bash
 node Task_1.3/run.js
-
+```
 
 ## 2. Automated Test Suites (`test.js`)
 Runs strict assertion suites containing:
@@ -120,12 +122,12 @@ Runs strict assertion suites containing:
 ### Run Task 1.1 Tests
 ```bash
 node Task_1.1/test.js
-
+```
 ### Run Task 1.2 Tests
 ```bash
 node Task_1.2/test.js
-
+```
 ### Run Task 1.3 Tests
 ```bash
 node Task_1.3/test.js
-
+```
