@@ -1,5 +1,6 @@
+const path = require('path');
 const dotenv = require('dotenv');
-dotenv.config();
+dotenv.config({ path: path.join(__dirname, '../../.env') });
 
 function authenticateToken(req, res, next) {
   const authHeader = req.headers['authorization'];
