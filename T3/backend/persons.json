@@ -1,0 +1,38 @@
+[
+  {
+    "_id": "60d5ec496f414238e833d401",
+    "name": "John Doe",
+    "gender": "male",
+    "birthYear": 1970
+  },
+  {
+    "_id": "60d5ec496f414238e833d402",
+    "name": "Jane Doe",
+    "gender": "female",
+    "birthYear": 1972
+  },
+  {
+    "_id": "60d5ec496f414238e833d403",
+    "name": "Alice Doe",
+    "gender": "female",
+    "birthYear": 1995
+  },
+  {
+    "_id": "60d5ec496f414238e833d404",
+    "name": "Bob Doe",
+    "gender": "male",
+    "birthYear": 1998
+  },
+  {
+    "_id": "60d5ec496f414238e833d405",
+    "name": "Charlie Smith",
+    "gender": "male",
+    "birthYear": 1993
+  },
+  {
+    "_id": "60d5ec496f414238e833d406",
+    "name": "Eve Smith",
+    "gender": "female",
+    "birthYear": 2020
+  }
+]

@@ -1,0 +1,12 @@
+[
+  {
+    "name": "The Doe Family",
+    "parents": ["60d5ec496f414238e833d401", "60d5ec496f414238e833d402"],
+    "children": ["60d5ec496f414238e833d403", "60d5ec496f414238e833d404"]
+  },
+  {
+    "name": "The Smith Family",
+    "parents": ["60d5ec496f414238e833d405", "60d5ec496f414238e833d403"],
+    "children": ["60d5ec496f414238e833d406"]
+  }
+]
