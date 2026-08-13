@@ -38,12 +38,17 @@ router.get('/:id/tree', async (req, res) => {
       return res.status(404).json({ error: 'Person not found' });
     }
 
-    if (!person.parentInFamilies || person.parentInFamilies.length === 0) {
+    const startFamilyIds = [
+      ...(person.parentInFamilies || []),
+      ...(person.childInFamilies || [])
+    ];
+
+    if (startFamilyIds.length === 0) {
       return res.status(200).json({ person, rootFamilies: [] });
     }
 
     const tree = await Family.aggregate([
-      { $match: { _id: { $in: person.parentInFamilies } } },
+      { $match: { _id: { $in: startFamilyIds } } },
       {
         $graphLookup: {
           from: 'families',
@@ -51,7 +56,17 @@ router.get('/:id/tree', async (req, res) => {
           connectFromField: 'children',
           connectToField: 'parents',
           as: 'descendantFamilies',
-          depthField: 'generationDepth'
+          depthField: 'descendantDepth'
+        }
+      },
+      {
+        $graphLookup: {
+          from: 'families',
+          startWith: '$parents',
+          connectFromField: 'parents',
+          connectToField: 'children',
+          as: 'ancestorFamilies',
+          depthField: 'ancestorDepth'
         }
       }
     ]);
@@ -60,7 +75,9 @@ router.get('/:id/tree', async (req, res) => {
         { path: 'parents', model: 'Person' },
         { path: 'children', model: 'Person' },
         { path: 'descendantFamilies.parents', model: 'Person' },
-        { path: 'descendantFamilies.children', model: 'Person' }
+        { path: 'descendantFamilies.children', model: 'Person' },
+        { path: 'ancestorFamilies.parents', model: 'Person' },
+        { path: 'ancestorFamilies.children', model: 'Person' }
     ]);
 
     res.status(200).json({ person, rootFamilies: tree });

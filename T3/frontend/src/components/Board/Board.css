@@ -1,0 +1,51 @@
+/* Right Panel (70%) */
+.board-container {
+  flex-grow: 1;
+  position: relative;
+  height: 100%;
+  background-color: #f1f5f9;
+}
+
+/* Floating Top Bar */
+.board-toolbar {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.save-btn {
+  background-color: #0f172a;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.2s;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.save-btn:hover {
+  background-color: #1e293b;
+}
+
+/* Status messages */
+.status-msg {
+  background: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.status-success { color: #166534; }
+.status-error { color: #991b1b; }
