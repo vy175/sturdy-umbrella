@@ -1,6 +1,8 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const router = express.Router();
 const Person = require('../models/Person');
+const Family = require('../models/Family');
 
 router.post('/', async (req, res) => {
   try {
@@ -23,6 +25,38 @@ router.get('/', async (req, res) => {
     
     const persons = await Person.find(query);
     res.status(200).json(persons);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// GET the full descendant tree for a person using $graphLookup
+router.get('/:id/tree', async (req, res) => {
+  try {
+    const person = await Person.findById(req.params.id);
+    if (!person) {
+      return res.status(404).json({ error: 'Person not found' });
+    }
+
+    if (!person.parentInFamilies || person.parentInFamilies.length === 0) {
+      return res.status(200).json({ person, rootFamilies: [] });
+    }
+
+    const tree = await Family.aggregate([
+      { $match: { _id: { $in: person.parentInFamilies } } },
+      {
+        $graphLookup: {
+          from: 'families',
+          startWith: '$children',
+          connectFromField: 'children',
+          connectToField: 'parents',
+          as: 'descendantFamilies',
+          depthField: 'generationDepth'
+        }
+      }
+    ]);
+
+    res.status(200).json({ person, rootFamilies: tree });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

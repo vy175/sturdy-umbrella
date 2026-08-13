@@ -25,6 +25,14 @@ router.post('/', async (req, res) => {
     const family = new Family(req.body);
     await family.save();
     
+    // Sync Person two-way references
+    if (family.parents && family.parents.length > 0) {
+      await Person.updateMany({ _id: { $in: family.parents } }, { $push: { parentInFamilies: family._id } });
+    }
+    if (family.children && family.children.length > 0) {
+      await Person.updateMany({ _id: { $in: family.children } }, { $push: { childInFamilies: family._id } });
+    }
+
     await family.populate(['parents', 'children']);
     
     res.status(201).json(family);
@@ -69,14 +77,28 @@ router.put('/:id', async (req, res) => {
   try {
     await validatePersonIds(req.body.parents, req.body.children);
 
+    // Clear old state for perfect syncing
+    await Person.updateMany({ parentInFamilies: req.params.id }, { $pull: { parentInFamilies: req.params.id } });
+    await Person.updateMany({ childInFamilies: req.params.id }, { $pull: { childInFamilies: req.params.id } });
+
     const family = await Family.findByIdAndUpdate(req.params.id, req.body, { 
       new: true, 
       runValidators: true 
-    }).populate('parents').populate('children');
+    });
     
     if (!family) {
       return res.status(404).json({ error: 'Family not found' });
     }
+
+    // Add references back
+    if (family.parents && family.parents.length > 0) {
+      await Person.updateMany({ _id: { $in: family.parents } }, { $push: { parentInFamilies: family._id } });
+    }
+    if (family.children && family.children.length > 0) {
+      await Person.updateMany({ _id: { $in: family.children } }, { $push: { childInFamilies: family._id } });
+    }
+
+    await family.populate(['parents', 'children']);
     res.status(200).json(family);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -89,6 +111,11 @@ router.delete('/:id', async (req, res) => {
     if (!family) {
       return res.status(404).json({ error: 'Family not found' });
     }
+
+    // Clear removed family from all persons
+    await Person.updateMany({ parentInFamilies: req.params.id }, { $pull: { parentInFamilies: req.params.id } });
+    await Person.updateMany({ childInFamilies: req.params.id }, { $pull: { childInFamilies: req.params.id } });
+
     res.status(200).json({ message: 'Family deleted successfully' });
   } catch (error) {
     res.status(500).json({ error: error.message });

@@ -20,7 +20,15 @@ const personSchema = new mongoose.Schema({
       },
       message: props => `Birth year (${props.value}) cannot be in the future!`
     }
-  }
+  },
+  parentInFamilies: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Family'
+  }],
+  childInFamilies: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Family'
+  }]
 }, {
   timestamps: true
 });

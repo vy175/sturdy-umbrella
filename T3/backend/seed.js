@@ -32,7 +32,23 @@ const seedDatabase = async () => {
     await Person.insertMany(personsData);
 
     console.log('Seeding Families...');
-    await Family.insertMany(familiesData);
+    const createdFamilies = await Family.insertMany(familiesData);
+
+    console.log('Updating Person two-way references...');
+    for (const family of createdFamilies) {
+      if (family.parents && family.parents.length > 0) {
+        await Person.updateMany(
+          { _id: { $in: family.parents } },
+          { $push: { parentInFamilies: family._id } }
+        );
+      }
+      if (family.children && family.children.length > 0) {
+        await Person.updateMany(
+          { _id: { $in: family.children } },
+          { $push: { childInFamilies: family._id } }
+        );
+      }
+    }
 
     console.log('Seed data successfully added!');
     mongoose.connection.close();
