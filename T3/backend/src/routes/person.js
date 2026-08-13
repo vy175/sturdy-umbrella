@@ -56,6 +56,13 @@ router.get('/:id/tree', async (req, res) => {
       }
     ]);
 
+    await Family.populate(tree, [
+        { path: 'parents', model: 'Person' },
+        { path: 'children', model: 'Person' },
+        { path: 'descendantFamilies.parents', model: 'Person' },
+        { path: 'descendantFamilies.children', model: 'Person' }
+    ]);
+
     res.status(200).json({ person, rootFamilies: tree });
   } catch (error) {
     res.status(500).json({ error: error.message });
