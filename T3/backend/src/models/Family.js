@@ -4,7 +4,7 @@ const familySchema = new mongoose.Schema({
   name: {
     type: String,
     trim: true,
-    default: ''
+    required: true,
   },
   parents: [{
     type: mongoose.Schema.Types.ObjectId,

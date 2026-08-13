@@ -13,7 +13,13 @@ const personSchema = new mongoose.Schema({
   },
   birthYear: {
     type: Number,
-    required: [true, 'Birth year is required']
+    required: [true, 'Birth year is required'],
+    validate: {
+      validator: function(v) {
+        return v <= new Date().getFullYear();
+      },
+      message: props => `Birth year (${props.value}) cannot be in the future!`
+    }
   }
 }, {
   timestamps: true
