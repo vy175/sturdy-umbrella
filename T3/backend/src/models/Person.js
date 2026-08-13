@@ -1,0 +1,24 @@
+const mongoose = require('mongoose');
+
+const personSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: [true, 'Name is required'],
+    trim: true
+  },
+  gender: {
+    type: String,
+    enum: ['male', 'female', 'other'],
+    required: true
+  },
+  birthYear: {
+    type: Number,
+    required: [true, 'Birth year is required']
+  }
+}, {
+  timestamps: true
+});
+
+personSchema.index({ birthYear: 1 });
+
+module.exports = mongoose.model('Person', personSchema);
